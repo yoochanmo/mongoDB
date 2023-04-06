@@ -1,0 +1,87 @@
+crud
+datago.kr
+¸ù°ídb object id
+aggregate
+
+
+
+ use mydb
+'switched to db mydb'
+show databases
+admin   40.00 KiB
+config  36.00 KiB
+local   40.00 KiB
+db.createCollection('test')
+{ ok: 1 }
+show databases
+admin   40.00 KiB
+config  72.00 KiB
+local   40.00 KiB
+mydb     8.00 KiB
+show collections
+test
+db.test.insertOne({name:'È«±æµ¿'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("642e24d84c1aad768a5ff6d6")
+}
+db.test.find();
+{
+  _id: ObjectId("642e24d84c1aad768a5ff6d6"),
+  name: 'È«±æµ¿'
+}
+db.test.insertOne({name:'È«±æµ¿',age:900})
+{
+  acknowledged: true,
+  insertedId: ObjectId("642e25c04c1aad768a5ff6d7")
+}
+db.test.find()
+{
+  _id: ObjectId("642e24d84c1aad768a5ff6d6"),
+  name: 'È«±æµ¿'
+}
+{
+  _id: ObjectId("642e25c04c1aad768a5ff6d7"),
+  name: 'È«±æµ¿',
+  age: 900
+}
+db.test.insertOne({name:'È«±æµ¿',age:900,
+  hobby : ['À½¾Ç°¨»ó','µ¶¼­'],
+  comment: {name: '¼ÕÈï¹Î',addr:'¿µ±¹'}
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("642e26634c1aad768a5ff6d8")
+}
+db.test.find()
+{
+  _id: ObjectId("642e24d84c1aad768a5ff6d6"),
+  name: 'È«±æµ¿'
+}
+{
+  _id: ObjectId("642e25c04c1aad768a5ff6d7"),
+  name: 'È«±æµ¿',
+  age: 900
+}
+{
+  _id: ObjectId("642e26634c1aad768a5ff6d8"),
+  name: 'È«±æµ¿',
+  age: 900,
+  hobby: [
+    'À½¾Ç°¨»ó',
+    'µ¶¼­'
+  ],
+  comment: {
+    name: '¼ÕÈï¹Î',
+    addr: '¿µ±¹'
+  }
+}
+db.enableFreeMonitoring();
+{
+  state: 'enabled',
+  message: 'To see your monitoring data, navigate to the unique URL below. Anyone you share the URL with will also be able to view this page. You can disable monitoring at any time by running db.disableFreeMonitoring().',
+  url
+  userReminder: '',
+  ok: 1
+}
+mydb
